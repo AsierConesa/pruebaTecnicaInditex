@@ -20,10 +20,15 @@ public class PriceController {
         this.priceQueryService = priceQueryService;
     }
 
-    @PostMapping
-    public ResponseEntity<PriceResponseDTO> getPrice(@RequestBody PriceRequestDTO request) {
-        return priceQueryService.findPrice(request)
+    @GetMapping
+    public ResponseEntity<PriceResponseDTO> getPrice(
+            @RequestParam int brandId,
+            @RequestParam int productId,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime applicationDate) {
+
+        return priceQueryService
+                .findPrice(brandId, productId, applicationDate)
                 .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+                .orElse(ResponseEntity.notFound().build());
     }
 }

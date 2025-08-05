@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -19,22 +20,12 @@ public class PriceControllerIntegrationTest {
 
     private static final String BASE_URL = "/prices";
 
-    // Método helper para construir JSON body
-    private String toJson(int brandId, int productId, String applicationDate) {
-        return String.format("""
-            {
-                "brandId": %d,
-                "productId": %d,
-                "applicationDate": "%s"
-            }
-            """, brandId, productId, applicationDate);
-    }
-
     @Test
     void testPriceAt_2020_06_14_10_00() throws Exception {
-        mockMvc.perform(post(BASE_URL)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(toJson(1, 35455, "2020-06-14T10:00:00")))
+        mockMvc.perform(get(BASE_URL)
+                        .param("brandId", "1")
+                        .param("productId", "35455")
+                        .param("applicationDate", "2020-06-14T10:00:00"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.productId").value(35455))
                 .andExpect(jsonPath("$.brandId").value(1))
@@ -44,9 +35,10 @@ public class PriceControllerIntegrationTest {
 
     @Test
     void testPriceAt_2020_06_14_16_00() throws Exception {
-        mockMvc.perform(post(BASE_URL)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(toJson(1, 35455, "2020-06-14T16:00:00")))
+        mockMvc.perform(get(BASE_URL)
+                        .param("brandId", "1")
+                        .param("productId", "35455")
+                        .param("applicationDate", "2020-06-14T16:00:00"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.productId").value(35455))
                 .andExpect(jsonPath("$.brandId").value(1))
@@ -56,9 +48,10 @@ public class PriceControllerIntegrationTest {
 
     @Test
     void testPriceAt_2020_06_14_21_00() throws Exception {
-        mockMvc.perform(post(BASE_URL)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(toJson(1, 35455, "2020-06-14T21:00:00")))
+        mockMvc.perform(get(BASE_URL)
+                        .param("brandId", "1")
+                        .param("productId", "35455")
+                        .param("applicationDate", "2020-06-14T21:00:00"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.productId").value(35455))
                 .andExpect(jsonPath("$.brandId").value(1))
@@ -68,9 +61,10 @@ public class PriceControllerIntegrationTest {
 
     @Test
     void testPriceAt_2020_06_15_10_00() throws Exception {
-        mockMvc.perform(post(BASE_URL)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(toJson(1, 35455, "2020-06-15T10:00:00")))
+        mockMvc.perform(get(BASE_URL)
+                        .param("brandId", "1")
+                        .param("productId", "35455")
+                        .param("applicationDate", "2020-06-15T10:00:00"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.productId").value(35455))
                 .andExpect(jsonPath("$.brandId").value(1))
@@ -80,9 +74,10 @@ public class PriceControllerIntegrationTest {
 
     @Test
     void testPriceAt_2020_06_16_21_00() throws Exception {
-        mockMvc.perform(post(BASE_URL)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(toJson(1, 35455, "2020-06-16T21:00:00")))
+        mockMvc.perform(get(BASE_URL)
+                        .param("brandId", "1")
+                        .param("productId", "35455")
+                        .param("applicationDate", "2020-06-16T21:00:00"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.productId").value(35455))
                 .andExpect(jsonPath("$.brandId").value(1))

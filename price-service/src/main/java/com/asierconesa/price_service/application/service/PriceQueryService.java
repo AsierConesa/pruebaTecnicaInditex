@@ -23,8 +23,9 @@ public class PriceQueryService implements PriceQueryUseCase {
     }
 
     @Override
-    public Optional<PriceResponseDTO> findPrice(PriceRequestDTO request) {
-        Optional<Price> price = priceRepositoryPort.findPriceByBrandProductAndDate(mapper.toCommand(request));
+    public Optional<PriceResponseDTO> findPrice(int brandId, int productId, LocalDateTime applicationDate) {
+
+        Optional<Price> price = priceRepositoryPort.findPriceByBrandProductAndDate(brandId, productId, applicationDate);
         return price.stream().findFirst().map(mapper::toDto);
     }
 }
