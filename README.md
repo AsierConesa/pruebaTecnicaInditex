@@ -6,7 +6,7 @@ La aplicación ha sido desarrollada con java 17 utilizando Springboot
 ### Desglose de la aplicación
 
 #### Endpoint:
-Se ha desarrollado un único endpoint GET para obtener los datos solicitados de la tabla Prices
+Se ha desarrollado un único endpoint GET para obtener los datos solicitados de la tabla Prices. La colección de postman necesaria para testearlo está dentro de la carpeta collections dentro del proyecto.
 
 #### Base de datos
 
