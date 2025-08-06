@@ -1,6 +1,7 @@
 package com.asierconesa.price_service.application.mapper;
 
 import com.asierconesa.price_service.domain.model.Price;
+import com.asierconesa.price_service.domain.model.PriceCreateCommand;
 import com.asierconesa.price_service.infraestructure.persistence.entity.PriceMO;
 import org.mapstruct.Mapper;
 
@@ -8,5 +9,7 @@ import org.mapstruct.Mapper;
 public interface PriceMOMapper {
 
     Price toDomain(PriceMO src);
+
+    PriceMO ToMO(PriceCreateCommand src);
 
 }

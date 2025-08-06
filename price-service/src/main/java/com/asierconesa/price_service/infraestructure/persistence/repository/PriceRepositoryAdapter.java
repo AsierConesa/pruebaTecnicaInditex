@@ -2,6 +2,7 @@ package com.asierconesa.price_service.infraestructure.persistence.repository;
 
 import com.asierconesa.price_service.application.mapper.PriceMOMapper;
 import com.asierconesa.price_service.domain.model.Price;
+import com.asierconesa.price_service.domain.model.PriceCreateCommand;
 import com.asierconesa.price_service.domain.port.out.PriceRepositoryPort;
 import org.springframework.stereotype.Component;
 
@@ -25,5 +26,10 @@ public class PriceRepositoryAdapter implements PriceRepositoryPort {
                 .stream()
                 .findFirst()
                 .map(mapper::toDomain);
+    }
+
+    @Override
+    public Price save(PriceCreateCommand command) {
+        return mapper.toDomain(repository.save(mapper.ToMO(command)));
     }
 }

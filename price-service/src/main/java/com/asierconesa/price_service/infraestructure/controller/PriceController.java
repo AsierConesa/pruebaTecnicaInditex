@@ -1,6 +1,6 @@
 package com.asierconesa.price_service.infraestructure.controller;
 
-import com.asierconesa.price_service.application.dto.PriceRequestDTO;
+import com.asierconesa.price_service.application.dto.PriceCreateRequestDTO;
 import com.asierconesa.price_service.application.dto.PriceResponseDTO;
 import com.asierconesa.price_service.application.service.PriceQueryService;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -30,5 +30,11 @@ public class PriceController {
                 .findPrice(brandId, productId, applicationDate)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    public ResponseEntity<PriceResponseDTO> createPrice(@RequestBody PriceCreateRequestDTO request) {
+        PriceResponseDTO response = priceQueryService.createPrice(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }
