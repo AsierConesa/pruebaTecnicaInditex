@@ -38,6 +38,34 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "createPrice",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"productId\": 35458,\r\n  \"brandId\": 2,\r\n  \"priceList\": 6,\r\n  \"startDate\": \"2024-08-06T08:00:00\",\r\n  \"endDate\": \"2024-12-31T23:59:59\",\r\n  \"priority\": 2,\r\n  \"price\": 40.99,\r\n  \"currency\": \"EUR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/prices",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"prices"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
