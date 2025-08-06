@@ -6,7 +6,15 @@ La aplicación ha sido desarrollada con java 17 utilizando Springboot
 ### Desglose de la aplicación
 
 #### Endpoint:
-Se ha desarrollado un único endpoint GET para obtener los datos solicitados de la tabla Prices. La colección de postman necesaria para testearlo está dentro de la carpeta collections dentro del proyecto.
+Se han desarrollado dos endpoints:
+El solicitado GET para obtener los datos solicitados de la tabla Prices. 
+Un endpoint EXTRA de tipo POST para crear un nuevo registro y publicarlo a un tópico de kafka
+
+La colección de postman necesaria para testearlo está dentro de la carpeta collections dentro del proyecto.
+
+#### Docker
+
+Esta aplicación usa Kafka como funcionalidad extra a la solicitada a la tarea, para correr la aplicacion es importante utilizar docker-compose up -d para correr en docker el kafka, no es necesario crear los tópicos posteriormente ya que se hace automáticamente con los @Bean dentro del código
 
 #### Base de datos
 
@@ -51,3 +59,7 @@ Se han realizado los tests de integración solicitados y se han ejecutado correc
 #### DDD
 
 Las entidades de dominio permanecen inmutables, si bien podrían convertirse en records o usar la etiqueta @Value, Mapstructs requiere de getters y setters para realizar los mappeos correctamente, y estas entidades no permiten crearlos. Sin embargo, la entidad de dominio tiene una única funcionalidad y un objeto de dominio creado permanece inmutable a nivel práctico
+
+#### Kafka
+
+Aunque en la tarea no se solicitaba, como funcionalidad extra he añadido un publicador de kafka, para probar la funcionalidad se puede hacer mediante el endpoint de creacion otorgado en la colección postman
