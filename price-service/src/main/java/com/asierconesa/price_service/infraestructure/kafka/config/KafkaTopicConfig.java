@@ -5,9 +5,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
 
+/**
+ * Configuración de los topics de Kafka para la aplicación.
+ * Esta clase no está pensada para ser extendida.
+ */
 @Configuration
 public class KafkaTopicConfig {
 
+    /**
+     * Define el topic de Kafka para eventos de creación de precios.
+     * @return un bean de tipo NewTopic configurado
+     */
     @Bean
     public NewTopic priceCreatedTopic() {
         return TopicBuilder.name("price-created-topic")

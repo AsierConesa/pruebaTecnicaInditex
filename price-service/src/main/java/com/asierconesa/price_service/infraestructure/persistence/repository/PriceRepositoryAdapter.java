@@ -1,35 +1,54 @@
 package com.asierconesa.price_service.infraestructure.persistence.repository;
 
-import com.asierconesa.price_service.application.mapper.PriceMOMapper;
+import com.asierconesa.price_service.infraestructure.persistence.mapper.PriceMOMapper;
 import com.asierconesa.price_service.domain.model.Price;
 import com.asierconesa.price_service.domain.model.PriceCreateCommand;
 import com.asierconesa.price_service.domain.port.out.PriceRepositoryPort;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Component
+@RequiredArgsConstructor
 public class PriceRepositoryAdapter implements PriceRepositoryPort {
 
+    /**
+     * El repositorio JPA.
+     */
     private final JpaPriceRepository repository;
+
+    /**
+     * El mapper Mapstruct.
+     */
     private final PriceMOMapper mapper;
 
-    public PriceRepositoryAdapter(JpaPriceRepository repository, PriceMOMapper mapper) {
-        this.repository = repository;
-        this.mapper = mapper;
-    }
-
+    /**
+     * Busca el Price en el repositorio con los parametros dados
+     * cuyo priority sea mayor.
+     * @param brandId ID de la marca
+     * @param productId ID del producto
+     * @param applicationDate Fecha de la aplicación
+     * @return devuelve un Optional del Price solicitado
+     */
     @Override
-    public Optional<Price> findPriceByBrandProductAndDate(int brandId, int productId, LocalDateTime applicationDate) {
-        return repository.findMatchingPrices(brandId, productId, applicationDate)
-                .stream()
-                .findFirst()
+    public Optional<Price> findPriceByBrandProductAndDate(
+            final int brandId,
+            final int productId,
+            final LocalDateTime applicationDate) {
+        return repository.findTopByBrandIdProductIdAndApplicationDate(
+                brandId, productId, applicationDate)
                 .map(mapper::toDomain);
     }
 
+    /**
+     * Guarda un Price en BBDD.
+     * @param command el Price a crear
+     * @return el Price Creado
+     */
     @Override
-    public Price save(PriceCreateCommand command) {
-        return mapper.toDomain(repository.save(mapper.ToMO(command)));
+    public Price save(final PriceCreateCommand command) {
+        return mapper.toDomain(repository.save(mapper.toMO(command)));
     }
 }
