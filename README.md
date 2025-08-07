@@ -32,7 +32,7 @@ Se ha dividido la aplicación en tres grandes grupos siguiendo la convención de
 - aplicación
 - infraestructura
 
-#### Solid
+#### SOLID
 
 Todas las clases están segmantadas de forma ordenada por nivel de profundidad.
 - DTO (Data transfer Object)
@@ -47,6 +47,8 @@ También se diferencian las distintas clases como
 
 Y otros como los puertos y adaptadores.
 Además se ha optado por una estructura package-by-feature para una mayor cohesión y mantenibilidad del código.
+
+La estructura de la aplicación separa todas las entidades y clases por funcionalidad, permitiendo una gran escalabilidad.
 
 #### Mapstructs
 
@@ -63,3 +65,23 @@ Las entidades de dominio permanecen inmutables, si bien podrían convertirse en 
 #### Kafka
 
 Aunque en la tarea no se solicitaba, como funcionalidad extra he añadido un publicador de kafka, para probar la funcionalidad se puede hacer mediante el endpoint de creacion otorgado en la colección postman, importante recordar que hay que lanzar el kafka en 
+
+#### Git
+
+En cuanto al control de versiones, he trabajado en la rama main, con commits frecuentes y mensajes claros, reflejando el avance por funcionalidades.
+
+Además, he utilizado Flyway para mantener un control de versiones explícito de los cambios en la base de datos, asegurando trazabilidad y reversibilidad en cada migración.
+
+He preparado la estructura de ramas para entornos separados, como producción y preproducción, aunque para esta prueba técnica solo se ha trabajado directamente sobre main. Me parece importante dejar esa base lista de cara a un ciclo de vida real del proyecto en caso de compartir el desarrollo con algún compañero habría seguido el estándar gitflow con ramas feature, fix y hotfix.
+
+#### Documentación
+
+Toda la aplicación está comentada con javadoc para poder generar una documentación detallada de toda la aplicación
+
+#### Buenas practicas con Linter y Sonar
+
+He seguido las indicaciones de Linter para asegurarme que todo el código sigue buenas prácticas, también he añadido herramientas para generar reportes con JaCoCo y poder analizar la cobertura y los smells con Sonar
+
+#### Eficiencia
+
+Se ha revisado el código intentando evitar expresiones como .findFirst() y utlizando en su lugar consultas nativas con LIMIT 1
