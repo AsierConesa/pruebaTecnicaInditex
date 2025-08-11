@@ -1,7 +1,7 @@
 package com.asierconesa.price_service.infraestructure.kafka.mapper;
 
-import com.asierconesa.price_service.domain.model.PriceCreateCommand;
-import com.asierconesa.price_service.infraestructure.kafka.dto.PriceCreatedEvent;
+import com.asierconesa.price_service.domain.command.PriceCreateCommand;
+import com.asierconesa.price_service.infraestructure.kafka.dto.KafkaPriceCreatedMessage;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PriceEventMapperTest {
+class PriceKafkaEventMapperTest {
 
-    private final PriceEventMapper mapper = Mappers.getMapper(PriceEventMapper.class);
+    private final PriceKafkaEventMapper mapper = Mappers.getMapper(PriceKafkaEventMapper.class);
 
     @Test
     void testToEvent() {
@@ -26,7 +26,7 @@ class PriceEventMapperTest {
         command.setCurrency("EUR");
         command.setPriority(1);
 
-        PriceCreatedEvent event = mapper.toEvent(command);
+        KafkaPriceCreatedMessage event = mapper.toEvent(command);
 
         assertNotNull(event);
         assertEquals(command.getProductId(), event.getProductId());

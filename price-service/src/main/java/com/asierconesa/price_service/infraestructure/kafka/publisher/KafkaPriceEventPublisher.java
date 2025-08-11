@@ -1,9 +1,9 @@
 package com.asierconesa.price_service.infraestructure.kafka.publisher;
 
-import com.asierconesa.price_service.domain.model.PriceCreateCommand;
+import com.asierconesa.price_service.domain.command.PriceCreateCommand;
 import com.asierconesa.price_service.domain.port.out.PriceEventPublisher;
-import com.asierconesa.price_service.infraestructure.kafka.dto.PriceCreatedEvent;
-import com.asierconesa.price_service.infraestructure.kafka.mapper.PriceEventMapper;
+import com.asierconesa.price_service.infraestructure.kafka.dto.KafkaPriceCreatedMessage;
+import com.asierconesa.price_service.infraestructure.kafka.mapper.PriceKafkaEventMapper;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -16,13 +16,13 @@ public class KafkaPriceEventPublisher implements PriceEventPublisher {
     /**
      * mapper de eventos de kafka.
      */
-    private final PriceEventMapper mapperEvent;
+    private final PriceKafkaEventMapper mapperEvent;
 
     /**
      * Plantilla de kafka especificando el evento que recibe.
      */
     @SuppressFBWarnings("EI_EXPOSE_REP2")
-    private final KafkaTemplate<String, PriceCreatedEvent> kafkaTemplate;
+    private final KafkaTemplate<String, KafkaPriceCreatedMessage> kafkaTemplate;
 
     /**
      * publica en kafka el evento recibido.

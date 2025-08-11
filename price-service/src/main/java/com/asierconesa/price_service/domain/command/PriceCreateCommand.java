@@ -1,4 +1,4 @@
-package com.asierconesa.price_service.domain.model;
+package com.asierconesa.price_service.domain.command;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

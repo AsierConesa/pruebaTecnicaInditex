@@ -1,7 +1,7 @@
 package com.asierconesa.price_service.infraestructure.persistence.mapper;
 
 import com.asierconesa.price_service.domain.model.Price;
-import com.asierconesa.price_service.domain.model.PriceCreateCommand;
+import com.asierconesa.price_service.domain.command.PriceCreateCommand;
 import com.asierconesa.price_service.infraestructure.persistence.entity.PriceMO;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
@@ -11,9 +11,9 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PriceMOMapperTest {
+class PricePersistenceMapperTest {
 
-    private final PriceMOMapper mapper = Mappers.getMapper(PriceMOMapper.class);
+    private final PricePersistenceMapper mapper = Mappers.getMapper(PricePersistenceMapper.class);
 
     @Test
     void testToDomain() {

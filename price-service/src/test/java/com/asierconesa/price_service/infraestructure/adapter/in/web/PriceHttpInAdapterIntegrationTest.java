@@ -1,4 +1,4 @@
-package com.asierconesa.price_service.infraestructure.controller;
+package com.asierconesa.price_service.infraestructure.adapter.in.web;
 
 import com.asierconesa.price_service.application.dto.PriceCreateRequestDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class PriceControllerIntegrationTest {
+public class PriceHttpInAdapterIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;

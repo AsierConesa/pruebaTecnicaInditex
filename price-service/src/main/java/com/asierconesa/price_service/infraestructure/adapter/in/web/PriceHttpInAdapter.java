@@ -1,4 +1,4 @@
-package com.asierconesa.price_service.infraestructure.controller;
+package com.asierconesa.price_service.infraestructure.adapter.in.web;
 
 import com.asierconesa.price_service.application.dto.PriceCreateRequestDTO;
 import com.asierconesa.price_service.application.dto.PriceResponseDTO;
@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/prices")
-public class PriceController {
+public class PriceHttpInAdapter {
 
     /**
      * El servicio.

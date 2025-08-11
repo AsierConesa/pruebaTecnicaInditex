@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PriceCreatedEvent {
+public class KafkaPriceCreatedMessage {
 
     /**
      * ID del producto al que pertenece el precio.

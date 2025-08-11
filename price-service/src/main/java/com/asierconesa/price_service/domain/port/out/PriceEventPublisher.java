@@ -1,6 +1,6 @@
 package com.asierconesa.price_service.domain.port.out;
 
-import com.asierconesa.price_service.domain.model.PriceCreateCommand;
+import com.asierconesa.price_service.domain.command.PriceCreateCommand;
 
 public interface PriceEventPublisher {
     /**

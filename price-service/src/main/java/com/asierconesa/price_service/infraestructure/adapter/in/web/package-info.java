@@ -1,4 +1,4 @@
 /**
  * Controladores REST que exponen los endpoints HTTP de la aplicación.
  */
-package com.asierconesa.price_service.infraestructure.controller;
+package com.asierconesa.price_service.infraestructure.adapter.in.web;

@@ -1,8 +1,8 @@
 package com.asierconesa.price_service.infraestructure.persistence.repository;
 
-import com.asierconesa.price_service.infraestructure.persistence.mapper.PriceMOMapper;
+import com.asierconesa.price_service.infraestructure.persistence.mapper.PricePersistenceMapper;
 import com.asierconesa.price_service.domain.model.Price;
-import com.asierconesa.price_service.domain.model.PriceCreateCommand;
+import com.asierconesa.price_service.domain.command.PriceCreateCommand;
 import com.asierconesa.price_service.domain.port.out.PriceRepositoryPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -22,7 +22,7 @@ public class PriceRepositoryAdapter implements PriceRepositoryPort {
     /**
      * El mapper Mapstruct.
      */
-    private final PriceMOMapper mapper;
+    private final PricePersistenceMapper mapper;
 
     /**
      * Busca el Price en el repositorio con los parametros dados
